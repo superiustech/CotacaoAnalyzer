@@ -4,7 +4,6 @@ using Domain.ViewModel;
 using Domain.Enumeradores;
 using IBID.WebService.Domain.Uteis;
 using AutoMapper;
-using Infra.Repositories;
 namespace Bussiness.Services
 {
     public class ProdutoService : IProdutoService

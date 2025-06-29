@@ -23,13 +23,16 @@ try
 
     builder.Services.AddScoped<IProdutoService, ProdutoService>();
     builder.Services.AddScoped<ICotacaoService, CotacaoService>();
+    builder.Services.AddScoped<IScoreService, ScoreService>();
 
     builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
     builder.Services.AddScoped<ICotacaoRepository, CotacaoRepository>();
+    builder.Services.AddScoped<IScoreRepository, ScoreRepository>();
 
     builder.Services.AddScoped<IEntidadeLeituraRepository, EntidadeLeituraRepository>();
 
     builder.Services.AddAutoMapper(typeof(ProdutoProfile).Assembly);
+    builder.Services.AddAutoMapper(typeof(ScoreProfile).Assembly);
     builder.Services.AddAutoMapper(typeof(ProdutoProfile), typeof(CotacaoItemProfile));
     builder.Services.AddAutoMapper(typeof(CotacaoItemProfile), typeof(CotacaoProfile));
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Domain.Entities;
+using System.Net.WebSockets;
 
 namespace Infra.Contexts
 {
@@ -9,6 +10,7 @@ namespace Infra.Contexts
         public DbSet<CWProduto> Produtos { get; set; }
         public DbSet<CWCotacao> Cotacoes { get; set; }
         public DbSet<CWCotacaoItem> CotacaoItens { get; set; }
+        public DbSet<CWScore> Scores { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,6 +42,16 @@ namespace Infra.Contexts
                 entity.Property(e => e.nPrazoEntrega).IsRequired();
                 entity.Property(e => e.dVlProposto).HasColumnType("decimal(18,2)");
                 entity.ToTable("COTACAO_ITEM");
+            });
+
+            modelBuilder.Entity<CWScore>(entity =>
+            {
+                entity.HasKey(e => e.nCdScore);
+                entity.Property(e => e.nPesoValor).IsRequired();
+                entity.Property(e => e.nPesoFreteIncluso).IsRequired();
+                entity.Property(e => e.nPesoPrazoEntrega).IsRequired();
+                entity.Property(e => e.tDtCriacaoPeso).IsRequired();
+                entity.ToTable("COTACAO_SCORE");
             });
             #endregion
 
