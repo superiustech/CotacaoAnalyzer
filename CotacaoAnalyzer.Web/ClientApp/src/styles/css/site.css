@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+html {
+    font-size: 14px;
+    font-family: 'OpenSans', sans-serif !important;
+}
+
+body {
+    overflow-x: hidden;
+    margin: 0;
+    background-color: #f8f9fa;
+}
+
+.main-content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    align-content: center !important;
+    transition: margin-left 0.3s ease;
+    margin-left: 0;
+}

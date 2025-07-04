@@ -7,5 +7,6 @@ namespace Domain.Interfaces
         Task<List<CWCotacao>> PesquisarCotacoes();
         Task<CWCotacao> CadastrarCotacao(CWCotacao cwCotacao);
         Task<CWCotacao> EditarCotacao(CWCotacao cwCotacao);
+        Task AdicionarItens(CWCotacao cwCotacao, List<CWCotacaoItem> lstCotacaoItem);
     }
 }

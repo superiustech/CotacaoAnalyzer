@@ -47,6 +47,7 @@ namespace Infra.Repositories
 
                     if (produtoExistente != null)
                     {
+                        _context.Entry(item.Produto).State = EntityState.Detached;
                         item.Produto = produtoExistente;
                     }
                     else
@@ -57,5 +58,6 @@ namespace Infra.Repositories
                 }
             }
         }
+
     }
 }

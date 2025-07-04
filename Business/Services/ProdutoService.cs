@@ -61,7 +61,41 @@ namespace Bussiness.Services
                 throw;
             }
         }
-        private async Task<bool> ValidarProdutoExistenteAsync(int codigoProduto)
+        public List<int> GarantirProdutosComuns(List<CWCotacao> cotacoes)
+        {
+            var grupos = cotacoes
+                .SelectMany(c => c.lstCotacaoItem
+                .Select(i => new { i.nCdProduto, c.nCdCotacao }))
+                .GroupBy(x => x.nCdProduto)
+                .ToList();
+
+            var produtoMaisPresente = grupos
+                .OrderByDescending(g => g
+                .Select(x => x.nCdCotacao)
+                .Distinct()
+                .Count())
+                .FirstOrDefault();
+
+            if (produtoMaisPresente == null)
+                return new List<int>();
+
+            var cotacoesComProdutoComum = produtoMaisPresente
+                .Select(x => x.nCdCotacao)
+                .Distinct()
+                .ToList();
+
+            var produtosComuns = grupos
+                .Where(g => g
+                    .Select(x => x.nCdCotacao)
+                    .Distinct()
+                    .Count() == cotacoesComProdutoComum.Count)
+                .Select(g => g.Key)
+                .ToList();
+
+            return produtosComuns;
+        }
+
+        public async Task<bool> ValidarProdutoExistenteAsync(int codigoProduto)
         {
             CWProduto cwProduto = await _entidadeLeituraRepository.Consultar<CWProduto>(x => x.nCdProduto == codigoProduto);
             return cwProduto != null;

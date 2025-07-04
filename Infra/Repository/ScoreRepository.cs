@@ -4,6 +4,7 @@ using Domain.Entities;
 using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Infra.Contexts;
+using IBID.WebService.Domain.Uteis;
 
 namespace Infra.Repositories
 {
@@ -37,6 +38,18 @@ namespace Infra.Repositories
 
             await _context.SaveChangesAsync();
             return existente;
+        }
+        public async Task<CWScore> ObterScore(int codigoScore)
+        {
+            var score = await _context.Scores.AsNoTracking().FirstOrDefaultAsync(x => x.nCdScore == codigoScore) ??
+            new CWScore()
+            {
+                nCdScore = 0,
+                nPesoValor = 1,
+                nPesoPrazoEntrega = 2,
+                nPesoFreteIncluso = 3
+            };
+            return score;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Entities;
 using Domain.ViewModel;
+using Domain.ViewModel.Requests;
 
 namespace Infra.Mapping
 {

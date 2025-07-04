@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CotacaoAnalyzer", "CotacaoAnalyzer\CotacaoAnalyzer.csproj", "{69DE374F-69AC-4309-ADBC-5313046B1E8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CotacaoAnalyzer.Api", "CotacaoAnalyzer\CotacaoAnalyzer.Api.csproj", "{69DE374F-69AC-4309-ADBC-5313046B1E8A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bussiness", "Business\Bussiness.csproj", "{77B281F4-2321-47B9-9AA8-84CA0D95A264}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{B78941C2-1C20-48CD-B0AF-BC56AB9DAE99}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infra\Infra.csproj", "{4E5B3B84-D1FA-4690-9CF3-E34D8456E958}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CotacaoAnalyzerTest", "CotacaoAnalyzerTest\CotacaoAnalyzerTest.csproj", "{AEF77C8A-5842-44D5-8BA2-25A17D50B2C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CotacaoAnalyzer.Web", "CotacaoAnalyzer.Web\CotacaoAnalyzer.Web.csproj", "{8654537E-EB70-4A02-A544-27D463DF8DD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{4E5B3B84-D1FA-4690-9CF3-E34D8456E958}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E5B3B84-D1FA-4690-9CF3-E34D8456E958}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E5B3B84-D1FA-4690-9CF3-E34D8456E958}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEF77C8A-5842-44D5-8BA2-25A17D50B2C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF77C8A-5842-44D5-8BA2-25A17D50B2C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEF77C8A-5842-44D5-8BA2-25A17D50B2C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEF77C8A-5842-44D5-8BA2-25A17D50B2C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8654537E-EB70-4A02-A544-27D463DF8DD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8654537E-EB70-4A02-A544-27D463DF8DD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8654537E-EB70-4A02-A544-27D463DF8DD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8654537E-EB70-4A02-A544-27D463DF8DD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -10,6 +10,23 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("AllowReactApp",
+            policy =>
+            {
+                policy.WithOrigins(
+                        "https://localhost:5102",
+                        "http://localhost:5103",
+                        "http://localhost:3000",
+                        "https://localhost:3000"
+                    )
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
+            });
+    });
+
     builder.Services.AddDbContext<AnalyzerDbContext>(options =>
         options.UseNpgsql(
             builder.Configuration.GetConnectionString("DefaultConnection")
@@ -36,17 +53,11 @@ try
     builder.Services.AddAutoMapper(typeof(ProdutoProfile), typeof(CotacaoItemProfile));
     builder.Services.AddAutoMapper(typeof(CotacaoItemProfile), typeof(CotacaoProfile));
 
-    builder.Services.AddControllersWithViews();
+    builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
 
 
     var app = builder.Build();
-
-    if (!app.Environment.IsDevelopment())
-    {
-        app.UseExceptionHandler("/Home/Error");
-        app.UseHsts();
-    }
 
     if (app.Environment.IsDevelopment())
     {
@@ -57,19 +68,13 @@ try
     app.UseHttpsRedirection();
     app.UseStaticFiles();
     app.UseRouting();
+    app.UseCors("AllowReactApp");
     app.UseAuthorization();
-
-    app.MapControllerRoute
-    (
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}"
-    );
-
+    app.MapControllers();
     app.Run();
-
 }
 catch (Exception ex)
 {
     Console.WriteLine($"Erro não tratado: {ex}");
-    Console.ReadLine(); // Para ver o erro antes de fechar
+    Console.ReadLine();
 }

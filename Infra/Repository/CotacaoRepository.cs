@@ -42,5 +42,11 @@ namespace Infra.Repositories
             await _context.SaveChangesAsync();
             return existente;
         }
+        public async Task AdicionarItens(CWCotacao cotacao, List<CWCotacaoItem> lstCotacaoItem)
+        {
+            await _produtoRepository.GarantirProdutos(lstCotacaoItem);
+            await _context.CotacaoItens.AddRangeAsync(lstCotacaoItem);
+            await _context.SaveChangesAsync();
+        }
     }
 }

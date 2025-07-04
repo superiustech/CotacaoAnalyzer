@@ -1,4 +1,5 @@
-﻿using Domain.ViewModel;
+﻿using Domain.Entities;
+using Domain.ViewModel;
 
 namespace Domain.Interfaces
 {
@@ -7,5 +8,7 @@ namespace Domain.Interfaces
         Task<List<DTOProduto>> PesquisarProdutos();
         Task<DTORetorno> CadastrarProduto(DTOProduto oDTOProduto);
         Task<DTORetorno> EditarProduto(DTOProduto oDTOProduto);
+        List<int> GarantirProdutosComuns(List<CWCotacao> cotacoes);
+        Task<bool> ValidarProdutoExistenteAsync(int codigoProduto);
     }
 }

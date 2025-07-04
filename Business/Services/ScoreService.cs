@@ -40,7 +40,8 @@ namespace Bussiness.Services
 
                 CWScore entidadeScore = _mapper.Map<CWScore>(oDTOScore);
                 CWScore cwScore = await _ScoreRepository.CadastrarScore(entidadeScore);
-                return new DTORetorno() { Status = enumSituacaoRetorno.Sucesso, Mensagem = $"Score de código {cwScore.nCdScore} cadastrado com sucesso no sistema." };
+                DTOScore dtoScore = _mapper.Map<DTOScore>(cwScore);
+                return new DTORetorno() { Status = enumSituacaoRetorno.Sucesso, Id = dtoScore, Mensagem = $"Score de código {dtoScore.CodigoScore} cadastrado com sucesso no sistema." };
             }
             catch
             {
