@@ -57,9 +57,9 @@ cd cotacao-analyzer
 dotnet ef database update
 
 # Rode a API
-dotnet run --project src/CotacaoAnalyzer.Api
+dotnet run --project .\CotacaoAnalyzer\
 
 # Rode o frontend 
-cd CotacaoAnalyzer.Web/clientapp
+cd .\CotacaoAnalyzer.Web\ClientApp\  
 npm install
 npm start
